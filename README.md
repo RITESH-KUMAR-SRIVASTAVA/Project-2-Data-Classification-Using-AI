@@ -93,8 +93,4 @@ The script provides:
 
 ## Author
 
-DecodeLabs AI Project 2
-
-## License
-
-This project is intended for educational purposes and does not currently include a formal license file.
+RITESH KUMAR SRIVASTAVA
