@@ -1,7 +1,4 @@
-"""
-DecodeLabs - AI Project 2: Data Classification Using AI
-Pipeline: Input (Iris + scaling) -> Process (split + KNN) -> Output (confusion matrix + F1)
-"""
+#DecodeLabs - AI Project 2: Data Classification Using AI
 
 import numpy as np
 import pandas as pd
@@ -18,9 +15,7 @@ from sklearn.metrics import (
     ConfusionMatrixDisplay,
 )
 
-# ------------------------------------------------------------------
 # 1. INPUT: load and understand the dataset
-# ------------------------------------------------------------------
 iris = load_iris()
 X, y = iris.data, iris.target
 df = pd.DataFrame(X, columns=iris.feature_names)
@@ -32,9 +27,7 @@ print("\nClass balance:\n", df["species"].value_counts())
 print("\nMissing values:", df.isnull().sum().sum())
 print("\nStatistics:\n", df.describe())
 
-# ------------------------------------------------------------------
-# 2. PROCESS: split FIRST, then scale (avoids data leakage)
-# ------------------------------------------------------------------
+# 2. PROCESS: split FIRST, then scale
 X_train, X_test, y_train, y_test = train_test_split(
     X, y,
     test_size=0.20,      # 80% train / 20% test
@@ -46,14 +39,13 @@ X_train, X_test, y_train, y_test = train_test_split(
 print("\nTraining samples:", len(X_train))
 print("Testing samples:", len(X_test))
 
-#FEATURE SCALING
+# 3. FEATURE SCALING
 scaler = StandardScaler()
 X_train_s = scaler.fit_transform(X_train)   # learn mean/std from TRAIN only
 X_test_s = scaler.transform(X_test)         # apply same mean/std to TEST
 
-# ------------------------------------------------------------------
-# 3. Choose K (the "elbow") using error rate vs K
-# ------------------------------------------------------------------
+
+# 4. Choose K using error rate vs K
 # Use 5-fold cross-validation on TRAINING data only, so the test set stays locked.
 k_values = range(1, 31)
 errors = []
@@ -76,17 +68,13 @@ plt.tight_layout()
 plt.savefig("k_selection.png", dpi=150)
 plt.close()
 
-# ------------------------------------------------------------------
-# 4. Train the final model: Instantiate -> Fit -> Predict
-# ------------------------------------------------------------------
+# 5. Train the final model
 model = KNeighborsClassifier(n_neighbors=best_k)   # K chosen via cross-validation (slide example uses 5)
 model.fit(X_train_s, y_train)     # train the model
 print("\nModel trained successfully!")
 predictions = model.predict(X_test_s)
 
-# ------------------------------------------------------------------
-# 5. OUTPUT: validate (accuracy alone is not enough)
-# ------------------------------------------------------------------
+# 6. OUTPUT
 accuracy = accuracy_score(y_test, predictions)
 print("\nAccuracy:")
 print(f"{accuracy:.4f}")
@@ -112,9 +100,7 @@ plt.tight_layout()
 plt.savefig("confusion_matrix.png", dpi=150)
 plt.close()
 
-# ------------------------------------------------------------------
-# 6. Test with completely new data (as the conclusion slide suggests)
-# ------------------------------------------------------------------
+# 6. Test with completely new data
 new_flower = np.array([[5.9, 3.0, 5.1, 1.8]])   # sepal L/W, petal L/W in cm
 new_flower_s = scaler.transform(new_flower)       # must scale the same way
 pred = model.predict(new_flower_s)[0]
