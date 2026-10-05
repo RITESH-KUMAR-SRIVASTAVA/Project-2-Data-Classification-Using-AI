@@ -1,4 +1,4 @@
-#DecodeLabs - AI Project 2: Data Classification Using AI
+#AI Project 2: Data Classification Using AI
 
 import numpy as np
 import pandas as pd
