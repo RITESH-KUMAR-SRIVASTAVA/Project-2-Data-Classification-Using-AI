@@ -100,7 +100,7 @@ plt.tight_layout()
 plt.savefig("confusion_matrix.png", dpi=150)
 plt.close()
 
-# 6. Test with completely new data
+# 7. Test with completely new data
 new_flower = np.array([[5.9, 3.0, 5.1, 1.8]])   # sepal L/W, petal L/W in cm
 new_flower_s = scaler.transform(new_flower)       # must scale the same way
 pred = model.predict(new_flower_s)[0]
