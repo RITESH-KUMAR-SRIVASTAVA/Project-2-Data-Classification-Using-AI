@@ -31,8 +31,7 @@ The project uses the built-in Iris dataset from `scikit-learn`.
 
 ## Files in the Repository
 
-- `iris.py` — main project script that loads the dataset, trains the model, evaluates performance, and makes predictions
-- `Basic classification model.py` — an alternative version of the same classification workflow
+- `Basic classification model.py` — main project script that loads the dataset, trains the model, evaluates performance, and makes predictions
 - `README.md` — project documentation
 
 ## Workflow
