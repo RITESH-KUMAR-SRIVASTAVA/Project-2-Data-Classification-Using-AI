@@ -31,7 +31,7 @@ The project uses the built-in Iris dataset from `scikit-learn`.
 
 ## Files in the Repository
 
-- `Basic classification model.py` — main project script that loads the dataset, trains the model, evaluates performance, and makes predictions
+- `Basic_classification_model.py` — main project script that loads the dataset, trains the model, evaluates performance, and makes predictions
 - `README.md` — project documentation
 
 ## Workflow
@@ -61,10 +61,10 @@ pip install numpy pandas matplotlib scikit-learn
 
 ## Run the Project
 
-Execute the script from the project folder:
+Execute the script from the project folder using the actual file name in the repository:
 
 ```bash
-python "Basic classification model.py"
+python Basic_classification_model.py
 ```
 
 This will print evaluation metrics and generate image files:
