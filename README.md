@@ -64,7 +64,7 @@ pip install numpy pandas matplotlib scikit-learn
 Execute the script from the project folder:
 
 ```bash
-python iris.py
+python "Basic classification model.py"
 ```
 
 This will print evaluation metrics and generate image files:
